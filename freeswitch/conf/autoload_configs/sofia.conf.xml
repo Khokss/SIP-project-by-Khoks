@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<configuration description="sofia Endpoint" name="sofia.conf">
+
+
+<global_settings>
+
+<param name="log-level" value="0"/>
+
+
+
+
+<param name="debug-presence" value="0"/>
+
+
+
+
+<param name="ext-rtp-ip" value="auto-nat:185.236.24.236"/>
+
+<param name="disable-register" value="true"/>
+
+<param name="apply-inbound-acl" value="trusted"/>
+
+
+<param name="bypass-media" value="false"/>
+<param name="bypass-media-after-bridge" value="false"/>
+
+</global_settings>
+
+
+
+
+
+<profiles>
+      <X-PRE-PROCESS cmd="include" data="../sip_profiles/*.xml"/>
+</profiles>
+
+</configuration>

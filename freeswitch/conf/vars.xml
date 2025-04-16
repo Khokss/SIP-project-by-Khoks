@@ -1,0 +1,34 @@
+<include>
+
+<X-PRE-PROCESS cmd="set" data="local_ip_v4=172.28.0.20"/>
+
+<X-PRE-PROCESS cmd="set" data="external_rtp_ip=185.236.24.236"/>
+<X-PRE-PROCESS cmd="set" data="external_sip_ip=185.236.24.236"/>
+<X-PRE-PROCESS cmd="set" data="external_sdp_ip=185.236.24.236"/>
+
+<X-PRE-PROCESS cmd="set" data="external_sip_port=5080"/>
+
+
+<X-PRE-PROCESS cmd="set" data="global_codec_prefs=PCMA,PCMU,telephone-event"/>
+<X-PRE-PROCESS cmd="set" data="outbound_codec_prefs=PCMA,PCMU,telephone-event"/>
+
+
+<X-PRE-PROCESS cmd="set" data="internal_sip_port=5060"/>
+
+
+<X-PRE-PROCESS cmd="set" data="internal_auth_calls=true"/>
+
+
+<X-PRE-PROCESS cmd="set" data="rtp_start_port=16384"/>
+<X-PRE-PROCESS cmd="set" data="rtp_end_port=16590"/>
+
+
+<X-PRE-PROCESS cmd="set" data="dtmf_type=rfc2833"/>
+
+
+<X-PRE-PROCESS cmd="set" data="rtp_delay_start_port=5000"/>
+
+
+<X-PRE-PROCESS cmd="set" data="log-level=DEBUG"/>
+
+</include>

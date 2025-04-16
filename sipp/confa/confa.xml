@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE scenario SYSTEM "sipp.dtd">
+
+<scenario name="Simple Conf Call">
+
+
+  <send>
+    <![CDATA[
+      INVITE sip:[field2]@[field1] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: <sip:[field0]@[field1]>;tag=[pid]Tag00[call_number]
+      To: <sip:[field2]@[field1]>
+      Call-ID: [call_id]
+      CSeq: 1 INVITE
+      Contact: <sip:[field0]@[local_ip]:[local_port]>
+      Max-Forwards: 70
+      Content-Type: application/sdp
+      Content-Length: [len]
+
+v=0
+o=[field0] 0 0 IN IP4 [local_ip]
+s=-
+c=IN IP4 [media_ip]
+t=0 0
+m=audio [media_port] RTP/AVP 8 101
+a=rtpmap:8 PCMA/8000
+a=rtpmap:101 telephone-event/8000
+a=fmtp:101 0-11
+a=sendrecv
+    ]]>
+  </send>
+
+  <recv response="100" optional="true"/>
+  <recv response="180" optional="true"/>
+  <recv response="200" rtd="true" crlf="true" rrs="true"/>
+
+
+ <send>
+  <![CDATA[
+    ACK sip:[field2]@[field1] SIP/2.0
+    Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+    From: <sip:[field0]@[field1]>;tag=[pid]Tag00[call_number]
+    To: <sip:[field2]@[field1]>[peer_tag_param]
+    Call-ID: [call_id]
+    CSeq: 1 ACK
+    Contact: <sip:[field0]@[local_ip]:[local_port]>
+    Route: <sip:172.28.0.20:5080;lr>
+    Max-Forwards: 70
+    Content-Length: 0
+  ]]>
+</send>
+
+  <nop>
+    <action>
+      <exec rtp_stream="./goodok.wav,-1,8,PCMA/8000"/>
+    </action>
+  </nop>
+
+
+  <pause milliseconds="8000"/>
+
+
+  <send retrans="500">
+    <![CDATA[
+      BYE [next_url] SIP/2.0
+      Via: SIP/2.0/[transport] [local_ip]:[local_port];branch=[branch]
+      From: <sip:[field0]@[field1]>;tag=[pid]Tag00[call_number]
+      To: <sip:[field2]@[field1]>[peer_tag_param]
+      Call-ID: [call_id]
+      CSeq: 2 BYE
+      Route: <sip:172.28.0.20:5080;lr>
+      Max-Forwards: 70
+      Content-Length: 0
+    ]]>
+  </send>
+
+  <recv response="200"/>
+
+</scenario>

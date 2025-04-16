@@ -1,0 +1,13 @@
+<configuration name="dialplan.conf" description="Dialplan Configuration">
+  <settings>
+ 
+  </settings>
+
+  <profiles>
+ 
+  </profiles>
+
+  <contexts>
+    <include>default/*.xml</include>
+  </contexts>
+</configuration>

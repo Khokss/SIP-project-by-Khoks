@@ -1,0 +1,7 @@
+<include>
+  <extension name="from-kamailio">
+    <condition field="destination_number" expression="^(\d+)$">
+      <action application="bridge" data="sofia/external/$1@172.28.0.40:5050"/>
+    </condition>
+  </extension>
+</include>

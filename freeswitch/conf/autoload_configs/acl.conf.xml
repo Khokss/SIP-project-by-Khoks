@@ -1,0 +1,13 @@
+<configuration name="acl.conf.xml" description="Network Lists">
+  <network-lists>
+
+    <list name="local-network" default="allow">
+      <node type="allow" cidr="172.28.0.0/16"/> 
+      <node type="deny" cidr="172.28.0.40/32"/> 
+    </list>
+
+ <list name="nat-addresses" default="deny">
+      <node type="allow" cidr="172.28.0.40/32"/> 
+    </list>
+  </network-lists>
+</configuration>

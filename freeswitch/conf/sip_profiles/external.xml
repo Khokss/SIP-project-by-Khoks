@@ -1,0 +1,67 @@
+<profile name="external">
+  <gateways/>
+  <aliases/>
+  <domains>
+    <domain name="all" alias="true" parse="false"/>
+  </domains>
+
+  <settings>
+
+    <param name="sip-ip" value="$${local_ip_v4}"/>
+    <param name="rtp-ip" value="$${local_ip_v4}"/>
+
+
+    <param name="ext-sip-ip" value="$${external_sip_ip}"/>
+    <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
+    <param name="external-sdp-ip" value="$${external_rtp_ip}"/>
+
+
+    <param name="sip-port" value="$${external_sip_port}"/>
+
+ 
+    <param name="context" value="default"/>
+    <param name="dialplan" value="XML"/>
+
+   
+    <param name="auth-calls" value="false"/>
+    <param name="disable-register" value="true"/>
+
+
+    <param name="local-network-acl" value="local-network"/>
+    <param name="apply-nat-acl" value="nat-addresses"/>
+	
+
+
+    <param name="NDLB-force-rport" value="true"/>
+    <param name="NDLB-broken-auth-hash" value="true"/>
+    <param name="NDLB-received-in-nat-reg-contact" value="true"/>
+
+
+    <param name="enable-3pcc" value="true"/>
+    <param name="disable-transcoding" value="false"/>
+    <param name="inbound-bypass-media" value="false"/>
+    <param name="proxy-media" value="false"/>
+    <param name="bypass-media" value="false"/>
+    <param name="inbound-proxy-media" value="false"/>
+    <param name="inbound-zrtp-passthru" value="false"/>
+    <param name="inbound-sdp-strict-mode" value="true"/>
+
+  
+    <param name="rtp-autofix-timing" value="true"/>
+    <param name="rtp-rewrite-timestamp" value="true"/>
+    <param name="rtp-relay-before-bridge" value="true"/>
+    <param name="inbound-late-negotiation" value="true"/>
+    <param name="rtp-secure-media" value="false"/>
+
+
+  
+    <param name="inbound-codec-prefs" value="$${global_codec_prefs}"/>
+    <param name="outbound-codec-prefs" value="$${outbound_codec_prefs}"/>
+
+ 
+    <param name="rtp-timer-name" value="soft"/>
+    <param name="rtp-timeout-sec" value="300"/>
+    <param name="rtp-hold-timeout-sec" value="1800"/>
+
+  </settings>
+</profile>

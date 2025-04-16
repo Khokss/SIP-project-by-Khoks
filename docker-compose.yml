@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+  freeswitch:
+    image: deker1176/freeswitch:latest
+    container_name: freeswitch
+    restart: unless-stopped
+    volumes:
+      - /data/project/freeswitch/conf:/usr/local/freeswitch/conf
+    ports:
+      - "8021:8021/tcp"
+      - "16384-16590:16384-16590/udp"
+    networks:
+      sip_net:
+        ipv4_address: 172.28.0.20
+
+  postgres:
+    image: postgres:13
+    container_name: postgres
+    restart: unless-stopped
+    volumes:
+      - /data/project/postgres:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: asdasd
+    ports:
+      - "5432:5432"
+    networks:
+      sip_net:
+        ipv4_address: 172.28.0.30
+
+  kamailio:
+    image: ghcr.io/kamailio/kamailio:5.8.6-xenial
+    container_name: kamailio
+    restart: unless-stopped
+    depends_on:
+      - postgres
+      - freeswitch
+    ports:
+      - "5050:5050/udp"
+      - "5050:5050/tcp"
+    volumes:
+      - /data/project/kamailio/config:/etc/kamailio
+      - /data/project/kamailio/logs:/var/log/kamailio
+    networks:
+      sip_net:
+        ipv4_address: 172.28.0.40
+
+networks:
+  sip_net:
+    external: true
+    name: sip_net

@@ -1,0 +1,7 @@
+<user id="101">
+  <variables>
+    <variable name="user_context" value="public"/>
+    <variable name="effective_caller_id_name" value="101"/>
+    <variable name="effective_caller_id_number" value="101"/>
+  </variables>
+</user>

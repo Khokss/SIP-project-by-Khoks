@@ -1,0 +1,5 @@
+<directory>
+  <include>
+    <X-PRE-PROCESS cmd="include" data="default/*.xml"/>
+  </include>
+</directory>

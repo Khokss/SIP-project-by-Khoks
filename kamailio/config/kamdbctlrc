@@ -1,0 +1,5 @@
+DBENGINE=postgres
+DBHOST=172.28.0.2
+DBNAME=postgres
+DBRWUSER=postgres
+DBRWPW="lV2Tt4zr"

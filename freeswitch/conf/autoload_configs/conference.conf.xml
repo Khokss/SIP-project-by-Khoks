@@ -1,0 +1,76 @@
+<configuration name="conference.conf" description="Simple Conference">
+
+
+  <advertise>
+    <room name="1000@$${domain}" status="Active"/>
+  </advertise>
+
+
+  <caller-controls>
+    <group name="default">
+      <control action="mute" digits="1"/>
+      <control action="unmute" digits="2"/>
+      <control action="hangup" digits="0"/>
+    </group>
+
+    <group name="simple">
+      <control action="mute" digits="1"/>
+      <control action="unmute" digits="2"/>
+      <control action="hangup" digits="0"/>
+    </group>
+
+    <group name="mod">
+      <control action="mute" digits="1"/>
+      <control action="unmute" digits="2"/>
+      <control action="lock" digits="3"/>
+      <control action="hangup" digits="0"/>
+    </group>
+  </caller-controls>
+
+ 
+  <profiles>
+    <profile name="basic">
+      
+      <param name="caller-controls" value="simple"/>
+      <param name="auto-caller-controls" value="simple"/>
+      <param name="verbose-dtmf" value="true"/>
+
+   
+      <param name="domain" value="$${domain}"/>
+      <param name="energy-level" value="100"/>
+      <param name="dtmf-type" value="rfc2833"/>
+
+  
+      <param name="mute-sound" value="/usr/local/freeswitch/conf/sounds/muted.wav"/>
+      <param name="unmute-sound" value="/usr/local/freeswitch/conf/sounds/unmuted.wav"/>
+      <param name="exit-sound" value="tone_stream://%(500,0,440)"/>
+
+    
+      <param name="conference-flags" value="auto-record|mintwo"/>
+      <param name="member-flags" value="can-hear|can-speak"/>
+    </profile>
+
+    <profile name="mod_basic">
+     
+      <param name="caller-controls" value="mod"/>
+      <param name="auto-caller-controls" value="mod"/>
+      <param name="verbose-dtmf" value="true"/>
+
+    
+      <param name="domain" value="$${domain}"/>
+      <param name="energy-level" value="100"/>
+      <param name="dtmf-type" value="rfc2833"/>
+
+  
+      <param name="mute-sound" value="/usr/local/freeswitch/conf/sounds/muted.wav"/>
+      <param name="unmute-sound" value="/usr/local/freeswitch/conf/sounds/unmuted.wav"/>
+      <param name="exit-sound" value="tone_stream://%(500,0,440)"/>
+      <param name="lock-sound" value="/usr/local/freeswitch/conf/sounds/locked.wav"/>
+
+      
+      <param name="conference-flags" value="moderator"/>
+      <param name="member-flags" value="can-hear"/>
+    </profile>
+  </profiles>
+
+</configuration>
